@@ -24,7 +24,6 @@ async function setupCamera() {
     const video = document.getElementById('webcam');
 
     const stream = await navigator.mediaDevices.getUserMedia({
-        // video: { width: webcamSettings.width, height: webcamSettings.width / 16 * 9 },
         video: {
             width: { min: 640, ideal: 1920 },
             height: { min: 360, ideal: 1080 }
@@ -65,6 +64,7 @@ async function estimatePoses(canvas, videoWidth, videoHeight, context) {
 
         drawImage(context, webcam, videoWidth, videoHeight);
 
+        // Draw estimate pose onto webcam feed
         poses.forEach(pose => {
             drawKeypoints(pose.keypoints, minScore, context);
             drawSkeleton(pose.keypoints, minScore, context);

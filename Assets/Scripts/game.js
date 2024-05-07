@@ -132,6 +132,7 @@ class Game {
         const doesBodyPartMatch = new Array(targetPose.pose.length).fill(false);
         this.doesPoseMatch = false;
 
+        // Loop through and check captured player pose with target pose keypoints
         for (let i = 0; i < targetPose.pose.length; i++) {
             if (doesBodyPartMatch[i]) continue;
             if (targetPose.pose[i] === undefined) {
@@ -149,6 +150,7 @@ class Game {
             }
         }
 
+        // Check if all keypoints match
         for (let i = 0; i < doesBodyPartMatch.length; i++) {
             if (!doesBodyPartMatch[i]) break;
             if (i !== doesBodyPartMatch.length - 1) continue;
